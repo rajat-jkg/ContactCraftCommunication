@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+
+{%block title%}
+<title>Account {%if user.is_authenticated%} - {{user.username}}{%endif%}</title>
+{%endblock%}
+
+
+{%block content%}
+
+{%if user.is_authenticated%}
+<p>Username: {{user.username}}</p>
+{%if user.first_name or user.second_name%}
+<p>Name: {{user.first_name}} {{user.last_name}}</p>
+{%endif%}
+
+<p>Email: {%if user.email%} {{user.email}} {%else%} Not added. (Click on update profile button to add email){%endif%}</p>
+
+<a class="button bg-dark text-light" href="{%url 'logout'%}">Logout</a>
+<a href="{% url 'profile-update'%}" class="button bg-dark text-light">Update Profile</a>
+<a href="{% url 'change-password'%}" class="button bg-dark text-light">Change Password</a>
+
+
+
+{%else%}
+<h3>You're not logged in</h3>
+<a href="{% url 'login'%}" class="button bg-dark text-light">Login</a>
+<a href="{% url 'register'%}" class="button bg-dark text-light">Register</a>
+
+{%endif%}
+
+
+
+{%endblock%}

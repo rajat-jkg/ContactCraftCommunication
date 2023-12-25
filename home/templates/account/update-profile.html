@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+{%block title%}
+<title>Update Account {%if user.is_authenticated%} - {{user.username}}{%endif%}</title>
+{%endblock%}
+
+
+{%block content%}
+
+{%if user.is_authenticated%}
+<form method="post">
+    <p>
+    <label >Username</label>
+    {{user.username}}
+    </p>
+    {%csrf_token%}
+    {{form.as_p}}
+
+    <button type="submit" class="button bg-dark text-light">Submit</button>
+</form>
+
+{%else%}
+<h3>You're not logged in</h3>
+<a href="{% url 'login'%}" class="button bg-dark text-light">Login</a>
+<a href="{% url 'register'%}" class="button bg-dark text-light">Register</a>
+{%endif%}
+
+{%endblock%}

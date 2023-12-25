@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+
+{% block title %}
+<title>Register | ContactCraft</title>
+{% endblock %}
+
+{% block meta-description %}
+<meta name="description" content="Register for a ContactCraft account here on this page ">
+{% endblock %}
+
+
+{%block content%}
+<form method="post">
+
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <button type="submit" class="button bg-dark text-light">Register</button>
+
+    <div class="auth-message">Already have an account</div>
+    <a href="{%url 'login'%}" class="button bg-dark text-light">Login</a>
+
+</form>
+{%endblock%}
