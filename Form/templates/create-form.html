@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+
+
+{%block title%}
+<title>Add a form</title>
+{%endblock%}
+
+{%block content%}
+<form method="post">
+
+{%csrf_token%}
+{{form.as_p}}
+<button type="submit" class="button bg-dark text-light">Submit</button>
+</form>
+{%endblock%}

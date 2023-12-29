@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+{% load static%}
+{%block title%}
+<title>User Dashboard</title>
+{%endblock%}
+
+{%block content%}
+
+    
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Sr no</th>
+                <th scope="col">From name</th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            
+            {%for i,form in formList%}
+            <tr>
+                <th scope="row">{{i|add:'1'}}.</th>
+                <th>{{form.form_name}}</th>
+                <th><img src="{%static 'edit-icon.png'%}" alt="edit" class="edit-icon"></th>
+            </tr>
+            
+
+            {%endfor%}
+        </tbody>
+    </table>
+
+
+    <a href="{%url 'add-form'%}" class="button bg-dark text-light margin-y-5">Add a new Form</a>
+{%endblock%}

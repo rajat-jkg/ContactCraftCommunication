@@ -20,4 +20,17 @@
     <h1>
         ContactCraft Communications
     </h1>
+    {%if user.is_authenticated%}
+        <h2>
+            Welcome {{user.first_name|capfirst}}
+        </h2>
+        <a href="{%url 'dashboard'%}" class="button bg-dark text-light">Go to Dashboard</a>
+
+    {%else%}
+        <h2>
+            Get started
+        </h2>
+        <a href="{%url 'login'%}" class="button bg-dark text-light">Login</a> or <a href="{%url 'register'%}" class="button bg-dark text-light">Register</a> 
+
+    {%endif%}
 {%endblock%}
